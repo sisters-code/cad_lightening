@@ -1,0 +1,24 @@
+
+import csv
+
+filename="train_vessel.csv"
+count_light = 0
+with open(filename) as f:
+    reader=csv.reader(f)
+    for idex, row in enumerate(reader):
+        count_vessel = 0
+        if idex == 0:
+            continue
+        row.pop(0)
+        cls = row.pop(0)
+        for idx, element in enumerate(row):
+            intg = float(element)
+            if 50< intg <= 100:
+                break
+            if 0< float(element) <=50:
+                count_vessel += 1
+            if count_vessel == 2:
+                continue
+            if idx == 4 and count_vessel == 1:
+                count_light += 1
+    print(count_light)
